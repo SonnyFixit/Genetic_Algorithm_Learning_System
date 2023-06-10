@@ -77,7 +77,7 @@ public class Car : MonoBehaviour
         }
         else
         {
-            int rand = Random.Range(0, (int)cars.Count);
+            int rand = UnityEngine.Random.Range(0, (int)cars.Count);
             if (cars[rand] == gameObject)
             {
                 changeCamera();

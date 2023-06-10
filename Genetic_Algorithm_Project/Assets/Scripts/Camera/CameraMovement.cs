@@ -18,7 +18,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         List<GameObject> cars = GameObject.Find("CarController").GetComponent<CarControllerAI>().getCars();
-        follow = cars[Random.Range(0, cars.Count - 1)];
+        follow = cars[UnityEngine.Random.Range(0, cars.Count - 1)];
         initialPosition = transform.position;
     }
 
