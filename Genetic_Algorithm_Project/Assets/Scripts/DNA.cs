@@ -32,7 +32,8 @@ public class DNA
                     float rand = UnityEngine.Random.Range(0f, 1f);
                     if (rand < mutationProb)
                     {
-                        weightsLayer[j][k] = UnityEngine.Random.Range(-maxVariation, maxVariation);
+                        float mutation = UnityEngine.Random.Range(-maxMutation, maxMutation);
+                        weightsLayer[j][k] += mutation;
                     }
                 }
             }
@@ -40,7 +41,7 @@ public class DNA
         }
         return new DNA(newDna);
     }
-    //DNA of the class (parent) + DNA parameter (parent)
+
     public DNA crossover(DNA otherParent)
     {
         List<float[][]> child = new List<float[][]>();
@@ -48,28 +49,28 @@ public class DNA
         {
             float[][] otherParentLayer = otherParent.getDNA()[i];
             float[][] parentLayer = dna[i];
+            float[][] childLayer = new float[parentLayer.Length][];
             for (int j = 0; j < parentLayer.Length; j++)
             {
+                childLayer[j] = new float[parentLayer[j].Length];
                 for (int k = 0; k < parentLayer[j].Length; k++)
                 {
                     float rand = UnityEngine.Random.Range(0f, 1f);
                     if (rand < 0.5f)
                     {
-                        //Second parent
-                        parentLayer[j][k] = otherParentLayer[j][k];
+                        // Second parent
+                        childLayer[j][k] = otherParentLayer[j][k];
                     }
                     else
                     {
-                        //Same
-                        //First parent
-                        parentLayer[j][k] = parentLayer[j][k];
+                        // Same as first parent
+                        childLayer[j][k] = parentLayer[j][k];
                     }
-
                 }
             }
-            child.Add(parentLayer);
-
+            child.Add(childLayer);
         }
         return new DNA(child);
     }
+
 }

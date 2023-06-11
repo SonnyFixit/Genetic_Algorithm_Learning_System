@@ -71,9 +71,10 @@ public class Car : MonoBehaviour
                 controller.secWinner = controller.winner;
                 controller.winner = inter;
             }
+            Destroy(gameObject);
             cars.Remove(gameObject);
             controller.newPopulation(true);
-            Destroy(gameObject);
+            
         }
         else
         {

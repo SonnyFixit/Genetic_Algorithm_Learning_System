@@ -17,8 +17,11 @@ public class Laser : MonoBehaviour
     {
         distance = distanceLaser;
         positionLaser = new Vector3(0, 0, finalLength);
+
+        Material skyCarLightGlowsMaterial = Resources.Load<Material>("SkyCarLightGlows");
+
         lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+        lineRenderer.material = skyCarLightGlowsMaterial;
         lineRenderer.startColor = laserColor;
         lineRenderer.endColor = laserColor;
         lineRenderer.startWidth = initialLength;
